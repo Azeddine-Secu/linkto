@@ -1,0 +1,50 @@
+const html = `<!DOCTYPE html>
+  <head> 
+				<style>
+				body { text-align: center; font-family: Arial, Helvetica; }
+				</style>
+			</head> 
+			<body> 
+				<table border="0" cellpadding="1" cellspacing="2" width="700" align="center" style="text-align: center;"> 
+					<tr> 
+						<td> 
+							<div> 
+								<img src="http://www.accor.com/fileadmin/templates/images/en/logo.png" /> 
+								<p style="font-weight: bold;">Link Generator</p>
+							</div>
+						</td> 
+					</tr>
+						<tr style="border-top: solid 2px black;"> 
+							<td style="border-top: solid 2px black; padding-top: 10px; border-bottom: solid 2px black; padding-bottom: 10px;">
+								<form name="formulaire" method="get" action="generate"> 
+									<table border="0" width="100%"> 
+										<tr> 
+											<td align="center" width="100%">
+												<div><input id="l" type="text" style="color: blue; font-family: courier; width: 600px; font-size: 20px; text-align: center" value="" name="l"/></div>
+											</td>
+											<td>&nbsp;&nbsp;</td> 
+											<td align="center" width="100%"> 
+												<div><input type="submit" value="Generate link" style="color: blue; width: 200px; border-width: 1px; padding: 5px;" /></div> 
+											</td>
+										</tr> 
+									</table>
+								</form>
+							</td>
+						</tr>
+				</table>
+			</body> 
+		</html> 
+	 }
+ 
+
+async function handleRequest(request) {
+  return new Response(html, {
+    headers: {
+      'content-type': 'text/html;charset=UTF-8',
+    },
+  });
+}
+
+addEventListener('fetch', event => {
+  return event.respondWith(handleRequest(event.request));
+});
